@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, System.Math;
 
 type
   TCalculator = class(TForm)
@@ -46,7 +46,10 @@ type
     procedure btn9Click(Sender: TObject);
     procedure btnMulClick(Sender: TObject);
     procedure btnDivClick(Sender: TObject);
-
+    procedure btnPercentClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnEqualClick(Sender: TObject);
+    function LastCharIsOperator: Boolean;
 
   private
     { Private declarations }
@@ -60,6 +63,32 @@ var
 implementation
 
 {$R *.dfm}
+
+function EvaluateExpression(const Expr: string): Double;
+var
+  FParser: TParser;
+begin
+  try
+    result := StrToFloat(Expr);
+  except
+    on E: Exception do
+    raise Exception.Create('Error: Invalid Expression');
+  end;
+end;
+
+function TCalculator.LastCharIsOperator: Boolean;
+var
+  LastChar: Char;
+begin
+  if Length(txtResult.Text) = 0 then
+    Exit(False);
+
+  LastChar := txtResult.Text[Length(txtResult.Text)];
+
+
+  Result := (LastChar = '+') or (LastChar = '-') or (LastChar = '*') or (LastChar = '/');
+end;
+
 
 procedure TCalculator.btn1Click(Sender: TObject);
 begin
@@ -108,27 +137,60 @@ end;
 
 procedure TCalculator.btnDivClick(Sender: TObject);
 begin
-txtResult.Text := txtResult.Text + '/';
+  if not LastCharIsOperator then
+    txtResult.Text := txtResult.Text + '/';
 end;
 
 procedure TCalculator.btnDotClick(Sender: TObject);
 begin
-txtResult.Text := txtResult.Text + '.';
+    txtResult.Text := txtResult.Text + '.';
+end;
+
+procedure TCalculator.btnEqualClick(Sender: TObject);
+  var
+    result: Double;
+begin
+  try
+    if LastCharIsOperator then
+      txtResult.Text := Copy(txtResult.Text, 1, Length(txtResult.Text) -1);
+
+      result := EvaluateExpression(txtResult.Text);
+      txtResult.Text := FloatToStr(result);
+  except
+    on E: Exception do
+      txtResult.Text := 'Error';
+  end;
 end;
 
 procedure TCalculator.btnMinusClick(Sender: TObject);
 begin
-txtResult.Text := txtResult.Text + '-';
+  if not LastCharIsOperator then
+    txtResult.Text := txtResult.Text + '-';
 end;
 
 procedure TCalculator.btnMulClick(Sender: TObject);
 begin
-txtResult.Text := txtResult.Text + '*';
+  if not LastCharIsOperator then
+    txtResult.Text := txtResult.Text + '*';
+end;
+
+procedure TCalculator.btnPercentClick(Sender: TObject);
+var
+  currentValue: Double;
+begin
+  try
+  currentValue := StrToFloat(txtResult.Text);
+  currentValue := currentValue / 100;
+  txtResult.Text := FloatToStr(currentValue);
+  except
+  txtResult.Text := 'Error';
+  end;
 end;
 
 procedure TCalculator.btnPlusClick(Sender: TObject);
 begin
-txtResult.Text := txtResult.Text + '+';
+  if not LastCharIsOperator then
+    txtResult.Text := txtResult.Text + '+';
 end;
 
 procedure TCalculator.btnResetClick(Sender: TObject);
@@ -142,5 +204,28 @@ txtResult.Text := txtResult.Text + '0';
 end;
 
 
+procedure TCalculator.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  case Key of
+  VK_NUMPAD0: btnZeroClick(Sender);
+  VK_NUMPAD1: btn1Click(Sender);
+  VK_NUMPAD2: btn2Click(Sender);
+  VK_NUMPAD3: btn3Click(Sender);
+  VK_NUMPAD4: btn4Click(Sender);
+  VK_NUMPAD5: btn5Click(Sender);
+  VK_NUMPAD6: btn6Click(Sender);
+  VK_NUMPAD7: btn7Click(Sender);
+  VK_NUMPAD8: btn8Click(Sender);
+  VK_NUMPAD9: btn9Click(Sender);
+  VK_ADD: btnPlusClick(Sender);
+  VK_SUBTRACT: btnMinusClick(Sender);
+  VK_MULTIPLY: btnMulClick(Sender);
+  //VK_DIVIDE: btnDivClick(Sender);
+  VK_RETURN: btnEqualClick(Sender);
+  VK_DECIMAL: btnDotClick(Sender);
+  VK_DELETE, VK_BACK: btnResetClick(Sender);
+  end;
+end;
 
 end.

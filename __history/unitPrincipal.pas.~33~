@@ -11,6 +11,7 @@ type
     btnReset: TButton;
     pnlResult: TPanel;
     pnlCommon: TPanel;
+    btnParent: TButton;
     btn9: TButton;
     btnZero: TButton;
     btnDot: TButton;
@@ -270,7 +271,7 @@ begin
   VK_ADD: btnPlusClick(Sender);
   VK_SUBTRACT: btnMinusClick(Sender);
   VK_MULTIPLY: btnMulClick(Sender);
-  VK_DIVIDE: btnDivClick(Sender);
+  //VK_DIVIDE: btnDivClick(Sender);
   VK_RETURN: btnEqualClick(Sender);
   VK_DECIMAL: btnDotClick(Sender);
   VK_DELETE, VK_BACK: btnResetClick(Sender);

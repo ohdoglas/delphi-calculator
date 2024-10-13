@@ -25,8 +25,7 @@ object Calculator: TCalculator
     Height = 89
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 8
-    ExplicitWidth = 625
+    ExplicitWidth = 385
     object txtResult: TEdit
       Left = 8
       Top = 8
@@ -57,12 +56,12 @@ object Calculator: TCalculator
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 91
+    ExplicitTop = 95
     object btnReset: TButton
-      Left = 261
-      Top = 209
-      Width = 61
-      Height = 65
+      Left = 134
+      Top = 210
+      Width = 57
+      Height = 63
       Caption = 'Clear'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -72,20 +71,6 @@ object Calculator: TCalculator
       ParentFont = False
       TabOrder = 0
       OnClick = btnResetClick
-    end
-    object btnParent: TButton
-      Left = 8
-      Top = 210
-      Width = 57
-      Height = 64
-      Caption = '( )'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 1
     end
     object btn9: TButton
       Left = 134
@@ -99,14 +84,14 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btn9Click
     end
     object btnZero: TButton
-      Left = 134
+      Left = 71
       Top = 210
       Width = 57
-      Height = 64
+      Height = 63
       Caption = '0'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -114,14 +99,14 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btnZeroClick
     end
     object btnDot: TButton
-      Left = 71
+      Left = 8
       Top = 210
       Width = 57
-      Height = 64
+      Height = 63
       Caption = '.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -129,7 +114,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btnDotClick
     end
     object btnDiv: TButton
@@ -144,7 +129,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btnDivClick
     end
     object btnMul: TButton
@@ -159,7 +144,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       OnClick = btnMulClick
     end
     object btnMinus: TButton
@@ -174,14 +159,14 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
       OnClick = btnMinusClick
     end
     object btnPlus: TButton
-      Left = 198
+      Left = 197
       Top = 210
-      Width = 57
-      Height = 64
+      Width = 58
+      Height = 63
       Caption = '+'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -189,14 +174,14 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
       OnClick = btnPlusClick
     end
     object btnPercent: TButton
-      Left = 261
-      Top = 140
-      Width = 61
-      Height = 65
+      Left = 260
+      Top = 1
+      Width = 62
+      Height = 64
       Caption = '%'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -204,7 +189,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       OnClick = btnPercentClick
     end
     object btn6: TButton
@@ -219,7 +204,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       OnClick = btn6Click
     end
     object btn5: TButton
@@ -234,7 +219,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 10
       OnClick = btn5Click
     end
     object btn8: TButton
@@ -249,7 +234,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 11
       OnClick = btn8Click
     end
     object btn4: TButton
@@ -264,7 +249,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 12
       OnClick = btn4Click
     end
     object btn1: TButton
@@ -279,7 +264,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 13
       OnClick = btn1Click
     end
     object btn7: TButton
@@ -294,7 +279,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 14
       OnClick = btn7Click
     end
     object btn3: TButton
@@ -309,7 +294,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 15
       OnClick = btn3Click
     end
     object btn2: TButton
@@ -324,14 +309,14 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 17
+      TabOrder = 16
       OnClick = btn2Click
     end
     object btnEqual: TButton
       Left = 261
-      Top = 1
+      Top = 71
       Width = 61
-      Height = 133
+      Height = 202
       Caption = '='
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -339,7 +324,7 @@ object Calculator: TCalculator
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 18
+      TabOrder = 17
       OnClick = btnEqualClick
     end
   end

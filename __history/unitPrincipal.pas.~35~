@@ -11,6 +11,7 @@ type
     btnReset: TButton;
     pnlResult: TPanel;
     pnlCommon: TPanel;
+    btnParent: TButton;
     btn9: TButton;
     btnZero: TButton;
     btnDot: TButton;

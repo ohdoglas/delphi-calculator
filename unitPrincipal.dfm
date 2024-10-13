@@ -1,7 +1,9 @@
 object Calculator: TCalculator
   Left = 0
   Top = 0
+  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Calculator'
   ClientHeight = 380
   ClientWidth = 449
@@ -11,7 +13,10 @@ object Calculator: TCalculator
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poScreenCenter
+  PrintScale = poNone
+  OnKeyDown = FormKeyDown
   TextHeight = 15
   object pnlResult: TPanel
     Left = 0
@@ -335,6 +340,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 18
+      OnClick = btnEqualClick
     end
   end
 end

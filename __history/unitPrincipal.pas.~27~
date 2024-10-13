@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, System.Math;
 
 type
   TCalculator = class(TForm)
@@ -39,6 +39,14 @@ type
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
+    procedure btn6Click(Sender: TObject);
+    procedure btn7Click(Sender: TObject);
+    procedure btn8Click(Sender: TObject);
+    procedure btn9Click(Sender: TObject);
+    procedure btnMulClick(Sender: TObject);
+    procedure btnDivClick(Sender: TObject);
+    procedure btnPercentClick(Sender: TObject);
 
 
   private
@@ -53,6 +61,18 @@ var
 implementation
 
 {$R *.dfm}
+
+function EvaluateExpression(const Expr: string): Double;
+var
+  FParser: TParser;
+begin
+  try
+    result := StrToFloat(Expr);
+  except
+    on E: Exception do
+    raise Exception.Create('Error: Invalid Expression');
+  end;
+end;
 
 procedure TCalculator.btn1Click(Sender: TObject);
 begin
@@ -74,14 +94,62 @@ begin
 txtResult.Text := txtResult.Text + '4';
 end;
 
+procedure TCalculator.btn5Click(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '5';
+end;
+
+procedure TCalculator.btn6Click(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '6';
+end;
+
+procedure TCalculator.btn7Click(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '7';
+end;
+
+procedure TCalculator.btn8Click(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '8';
+end;
+
+procedure TCalculator.btn9Click(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '9';
+end;
+
+procedure TCalculator.btnDivClick(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '/';
+end;
+
 procedure TCalculator.btnDotClick(Sender: TObject);
 begin
-txtResult.Text:= txtResult.Text + '.';
+txtResult.Text := txtResult.Text + '.';
 end;
 
 procedure TCalculator.btnMinusClick(Sender: TObject);
 begin
 txtResult.Text := txtResult.Text + '-';
+end;
+
+procedure TCalculator.btnMulClick(Sender: TObject);
+begin
+txtResult.Text := txtResult.Text + '*';
+end;
+
+procedure TCalculator.btnPercentClick(Sender: TObject);
+var
+  currentValue: Double;
+begin
+  try
+  currentValue := StrToFloat(txtResult.Text);
+  currentValue := currentValue / 100;
+  txtResult.Text := FloatToStr(currentValue);
+  except
+  txtResult.Text := 'Error';
+  end;
 end;
 
 procedure TCalculator.btnPlusClick(Sender: TObject);

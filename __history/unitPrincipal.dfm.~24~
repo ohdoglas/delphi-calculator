@@ -95,6 +95,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = btn9Click
     end
     object btnZero: TButton
       Left = 134
@@ -139,6 +140,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 5
+      OnClick = btnDivClick
     end
     object btnMul: TButton
       Left = 197
@@ -153,6 +155,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 6
+      OnClick = btnMulClick
     end
     object btnMinus: TButton
       Left = 198
@@ -197,6 +200,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 9
+      OnClick = btnPercentClick
     end
     object btn6: TButton
       Left = 134
@@ -241,6 +245,7 @@ object Calculator: TCalculator
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 12
+      OnClick = btn8Click
     end
     object btn4: TButton
       Left = 8

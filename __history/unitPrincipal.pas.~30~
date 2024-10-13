@@ -64,17 +64,17 @@ implementation
 
 {$R *.dfm}
 
-function EvaluateExpression(const Expr: string): Double;
-var
-  FParser: TParser;
-begin
-  try
-    result := StrToFloat(Expr);
-  except
-    on E: Exception do
-    raise Exception.Create('Error: Invalid Expression');
-  end;
-end;
+//function EvaluateExpression(const Expr: string): Double;
+//var
+//  FParser: TParser;
+//begin
+//  try
+//    result := StrToFloat(Expr);
+//  except
+//    on E: Exception do
+//    raise Exception.Create('Error: Invalid Expression');
+//  end;
+//end;
 
 function TCalculator.LastCharIsOperator: Boolean;
 var
